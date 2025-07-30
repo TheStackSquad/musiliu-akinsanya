@@ -1,31 +1,38 @@
 // src/app/page.js
+
+// src/app/page.js
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeInSlideUp, containerVariants } from "@/animation/animate"; // Import your animation variants
+import { fadeInSlideUp, containerVariants } from "@/animation/animate";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900 p-4 md:p-8 gap-4 md:gap-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 py-8">
       <motion.div
-        className="flex flex-col items-center md:items-start text-center md:text-left"
+        className="max-w-4xl w-full text-center"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
+        {/* Main Heading */}
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 dark:text-white"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-gray-900 dark:text-white leading-tight mb-8 md:mb-12"
           variants={fadeInSlideUp}
         >
           Musiliu Akinsanya Central
         </motion.h1>
-        <motion.p
-          className="font-cinzel text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-md mt-4"
+        
+        {/* Description */}
+        <motion.div
+          className="max-w-2xl mx-auto"
           variants={fadeInSlideUp}
         >
-          Official platform for news and developments, providing timely updates
-          on his work as a citizen and public officer.
-        </motion.p>
+          <p className="font-cinzel text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            Official platform for news and developments, providing timely updates
+            on his work as a citizen and public officer.
+          </p>
+        </motion.div>
       </motion.div>
     </div>
   );

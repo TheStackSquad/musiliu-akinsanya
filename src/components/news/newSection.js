@@ -1,4 +1,5 @@
-//src/components/news/newsSectiom.js
+//src/components/news/newSectiom.js
+'use client';
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -60,11 +61,15 @@ function NewsSection() {
             custom={idx}
             onClick={() => handleOpenModal(article)}
           >
-            <image
-              src={article.image}
-              alt={article.title}
-              className="w-full h-40 object-cover"
-            />
+            <div className="relative w-full h-40">
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
             <div className="p-4">
               <span className="text-xs text-indigo-600 dark:text-indigo-400 font-medium uppercase">
                 {article.tag}
