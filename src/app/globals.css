@@ -3,3 +3,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-cinzel {
+  font-family: var(--font-cinzel);
+}
+
+.font-cinzel-decorative {
+  font-family: var(--font-cinzel-decorative);
+}

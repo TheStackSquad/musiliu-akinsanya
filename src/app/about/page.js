@@ -1,22 +1,6 @@
 //src/app/about/page.js
 "use client";
-
 import React from "react";
-import { Cinzel, Cinzel_Decorative } from "next/font/google";
-
-// Import custom fonts
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  variable: "--font-cinzel",
-  display: "swap",
-});
-
-const cinzelDecorative = Cinzel_Decorative({
-  subsets: ["latin"],
-  variable: "--font-cinzel-decorative",
-  display: "swap",
-  weight: ["400", "700", "900"],
-});
 
 // Main Sections
 import AboutHeader from "@/components/about/aboutHeader";
@@ -30,9 +14,7 @@ import AboutCTA from "@/components/about/aboutCTA";
 
 export default function AboutPage() {
   return (
-    <main
-      className={`${cinzel.variable} ${cinzelDecorative.variable} antialiased min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900`}
-    >
+    <main className="font-sans antialiased min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900">
       {/* Page Container with Consistent Padding */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
