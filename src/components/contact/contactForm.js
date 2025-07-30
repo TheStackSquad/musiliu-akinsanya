@@ -107,7 +107,7 @@ export default function ContactForm() {
                 Message Sent!
               </h3>
               <p className="font-cinzel text-gray-600 dark:text-gray-300">
-                Thank you for reaching out. We'll get back to you soon.
+                Thank you for reaching out. We&apos;ll get back to you soon.
               </p>
             </div>
           </motion.div>
