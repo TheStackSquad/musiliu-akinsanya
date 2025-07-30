@@ -1,34 +1,42 @@
 // src/animations/animate.js
 
-// Define a more animated fade-in and slide-up animation for elements
+// src/animations/animate.js
+
+// Enhanced fade-in and slide-up animation with more pronounced effects
 export const fadeInSlideUp = {
   initial: {
     opacity: 0,
-    y: 50, // Start 50px below its final position (increased from 20px)
-    scale: 0.95, // Start slightly smaller for a subtle "pop" effect
+    y: 80, // Increased from 50px for more dramatic entrance
+    scale: 0.9, // More noticeable scale effect
+    filter: "blur(4px)", // Add subtle blur for smoother entrance
   },
   animate: {
     opacity: 1,
-    y: 0, // Animate to its final position
-    scale: 1, // Animate to its original size
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
     transition: {
-      type: "spring", // Use a spring physics-based animation
-      damping: 15, // Controls the oscillation (lower = more oscillation)
-      stiffness: 100, // Controls the speed of the spring (higher = faster)
-      duration: 0.8, // Overall duration for the animation
-      ease: "easeOut", // Still apply an ease for the initial part of the animation
+      type: "spring",
+      damping: 20, // Slightly increased damping for smoother motion
+      stiffness: 120, // Increased stiffness for snappier feel
+      duration: 1.2, // Slightly longer duration for more graceful animation
+      ease: [0.25, 0.1, 0.25, 1], // Custom cubic-bezier for elegant easing
     },
   },
 };
 
-// Define a staggered animation for children elements (no change here)
+// Enhanced container variants with better staggering
 export const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { 
+    opacity: 0,
+  },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Slightly reduced stagger for quicker overall reveal
-      delayChildren: 0.1, // Add a small initial delay before children start animating
+      staggerChildren: 0.3, // Increased stagger for more dramatic effect
+      delayChildren: 0.2, // Slightly longer initial delay
+      duration: 0.6,
+      ease: "easeOut",
     },
   },
 };

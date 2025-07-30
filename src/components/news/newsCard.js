@@ -5,11 +5,15 @@ import TagBadge from "./tagBadge";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function NewsCard({ article }) {
+export default function NewsCard({ article, onClick }) {
   return (
     <motion.div
-      className="bg-white dark:bg-zinc-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
-      whileHover={{ scale: 1.02 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
+      onClick={onClick}
+      className="cursor-pointer rounded-lg shadow-md overflow-hidden bg-white dark:bg-neutral-900 hover:shadow-xl transition-shadow duration-300"
     >
       <Image
         src={article.image}
@@ -31,3 +35,4 @@ export default function NewsCard({ article }) {
     </motion.div>
   );
 }
+

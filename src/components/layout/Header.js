@@ -1,9 +1,10 @@
 //src/components/layout/Header.js
 "use client";
 
-import { useState, useEffect, useRef } from "react"; // Import useRef
-import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import Link from "next/link";
 import {
   mobileMenuVariants,
   iconRotateVariants,
@@ -12,8 +13,8 @@ import {
 export default function Header() {
   const [theme, setTheme] = useState("light");
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef(null); // Create a ref for the mobile menu
-  const menuButtonRef = useRef(null); // Create a ref for the menu toggle button
+  const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   // Apply theme class to <html>
   useEffect(() => {
@@ -25,9 +26,6 @@ export default function Header() {
   // Effect to handle clicks outside the menu
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // If the menu is open AND
-      // the click is outside the menu itself AND
-      // the click is NOT on the menu toggle button
       if (
         menuOpen &&
         menuRef.current &&
@@ -39,16 +37,14 @@ export default function Header() {
       }
     };
 
-    // Add event listener when menu is open
     if (menuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
-    // Cleanup function to remove event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuOpen]); // Re-run effect when menuOpen state changes
+  }, [menuOpen]);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -57,35 +53,107 @@ export default function Header() {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
+  // Close mobile menu when a link is clicked
+  const handleMobileLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className="w-full fixed top-0 z-50 bg-white/80 dark:bg-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-        {/* Site Title */}
-        <div className="text-xl font-display font-bold text-gray-900 dark:text-white">
-          Akinsanya Central
-        </div>
+        {/* Site Title - Now clickable */}
+        <Link href="/" className="group">
+          <motion.div
+            className="text-xl font-display font-bold text-gray-900 dark:text-white transition-all duration-300 group-hover:text-primary group-hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Akinsanya Central
+          </motion.div>
+        </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex space-x-6 font-cinzel text-gray-700 dark:text-gray-300 text-sm">
-          <a href="#" className="hover:text-primary">
-            Home
-          </a>
-          <a href="#" className="hover:text-primary">
-            About
-          </a>
-          <a href="/news" className="hover:text-primary">
-            News
-          </a>
-          <a href="#" className="hover:text-primary">
-            Projects
-          </a>
-          <a href="#" className="hover:text-primary">
-            Contact
-          </a>
+        <nav className="hidden lg:flex items-center space-x-2 font-cinzel text-gray-700 dark:text-gray-300 text-sm">
+          <Link
+            href="/"
+            className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+              Home
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              layoutId="desktopHover"
+            />
+          </Link>
+
+          <Link
+            href="/about"
+            className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+              About
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              layoutId="desktopHover"
+            />
+          </Link>
+
+          <Link
+            href="/news"
+            className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+              News
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              layoutId="desktopHover"
+            />
+          </Link>
+
+          <Link
+            href="/projects"
+            className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+              Projects
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              layoutId="desktopHover"
+            />
+          </Link>
+
+          <Link
+            href="/contact"
+            className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+              Contact
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              layoutId="desktopHover"
+            />
+          </Link>
+
+          {/* Desktop Theme Toggle */}
+          <motion.button
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            whileTap={{ scale: 0.9 }}
+            variants={iconRotateVariants}
+            animate={theme === "dark" ? "open" : "closed"}
+            className="ml-4 p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+          >
+            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          </motion.button>
         </nav>
 
         {/* Mobile Icons */}
-        <div className="flex items-center space-x-4 lg:hidden">
+        <div className="flex items-center space-x-2 lg:hidden">
           {/* Theme Toggle */}
           <motion.button
             onClick={toggleTheme}
@@ -93,51 +161,109 @@ export default function Header() {
             whileTap={{ scale: 0.9 }}
             variants={iconRotateVariants}
             animate={theme === "dark" ? "open" : "closed"}
-            className="text-gray-700 dark:text-gray-300"
+            className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </motion.button>
 
           {/* Dropdown Toggle */}
           <motion.button
-            ref={menuButtonRef} // Attach ref to the menu button
+            ref={menuButtonRef}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
             whileTap={{ scale: 0.9 }}
-            className="text-gray-700 dark:text-gray-300"
+            className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            <motion.div
+              animate={{ rotate: menuOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </motion.div>
           </motion.button>
         </div>
       </div>
 
       {/* Mobile Menu Panel */}
-      {/* AnimatePresence enables exit animations for conditionally rendered components */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
-            ref={menuRef} // Attach ref to the mobile menu
-            className="lg:hidden bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-700 px-4 py-4 space-y-3 font-cinzel text-sm text-gray-700 dark:text-gray-300"
+            ref={menuRef}
+            className="lg:hidden bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-700 px-4 py-4 space-y-2 font-cinzel text-sm text-gray-700 dark:text-gray-300"
             initial="hidden"
             animate="visible"
-            exit="hidden" // This will play when menuOpen becomes false
+            exit="hidden"
             variants={mobileMenuVariants}
           >
-            <a href="#" className="block hover:text-primary">
-              Home
-            </a>
-            <a href="#" className="block hover:text-primary">
-              About
-            </a>
-            <a href="/news" className="hover:text-primary">
-              News
-            </a>
-            <a href="#" className="block hover:text-primary">
-              Projects
-            </a>
-            <a href="#" className="block hover:text-primary">
-              Contact
-            </a>
+            <Link
+              href="/"
+              onClick={handleMobileLinkClick}
+              className="block relative group px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                Home
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                layoutId="mobileHover"
+              />
+            </Link>
+
+            <Link
+              href="/about"
+              onClick={handleMobileLinkClick}
+              className="block relative group px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                About
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                layoutId="mobileHover"
+              />
+            </Link>
+
+            <Link
+              href="/news"
+              onClick={handleMobileLinkClick}
+              className="block relative group px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                News
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                layoutId="mobileHover"
+              />
+            </Link>
+
+            <Link
+              href="/projects"
+              onClick={handleMobileLinkClick}
+              className="block relative group px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                Projects
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                layoutId="mobileHover"
+              />
+            </Link>
+
+            <Link
+              href="/contact"
+              onClick={handleMobileLinkClick}
+              className="block relative group px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                Contact
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                layoutId="mobileHover"
+              />
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>
