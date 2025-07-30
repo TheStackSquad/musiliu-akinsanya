@@ -7,7 +7,7 @@ const projectData = [
     description:
       "Complete overhaul and resurfacing of key roads in the Oshodi district to ease traffic congestion.",
     category: "Infrastructure",
-    image: "/images/projects/road-rehab.jpg",
+    image: "/img/projects/road-construction.webp",
     status: "Completed",
     date: "April 2024",
   },
@@ -17,7 +17,7 @@ const projectData = [
     description:
       "Renovated 20+ primary schools across Lagos, improving classroom quality and access to sanitation.",
     category: "Education",
-    image: "/images/projects/school-renovation.jpg",
+    image: "/img/projects/School-Renovation.webp",
     status: "Ongoing",
     date: "Jan 2025",
   },
@@ -27,7 +27,7 @@ const projectData = [
     description:
       "Launched quarterly medical outreach providing free checkups and medication to over 10,000 residents.",
     category: "Healthcare",
-    image: "/images/projects/healthcare-week.jpg",
+    image: "/img/projects/healthcare-week.webp",
     status: "Completed",
     date: "Nov 2024",
   },
@@ -37,7 +37,7 @@ const projectData = [
     description:
       "Distributed business grants and skill acquisition tools to over 500 women entrepreneurs.",
     category: "Welfare",
-    image: "/images/projects/women-grants.jpg",
+    image: "/img/projects/women-2.webp",
     status: "Ongoing",
     date: "June 2025",
   },
@@ -47,7 +47,7 @@ const projectData = [
     description:
       "Mobilized community and local authorities for monthly sanitation and public awareness drives.",
     category: "Environment",
-    image: "/images/projects/cleanup-campaign.jpg",
+    image: "/img/projects/LAWMA.webp",
     status: "Completed",
     date: "Feb 2024",
   },
@@ -57,7 +57,7 @@ const projectData = [
     description:
       "Launched a fully-equipped digital hub for youth training in software engineering and design.",
     category: "Technology",
-    image: "/images/projects/youth-tech-hub.jpg",
+    image: "/img/projects/images.webp",
     status: "Ongoing",
     date: "March 2025",
   },

@@ -22,8 +22,8 @@ export default function NewsPage() {
   };
 
   return (
-    <main className="min-h-screen px-4 md:px-8 py-6 md:py-12 bg-light dark:bg-dark text-gray-900 dark:text-gray-100">
-      <h1 className="text-3xl md:text-4xl font-display font-bold mt-9 mb-8 text-center md:text-left lg:mt-12">
+    <main className="font-cinzel min-h-screen px-4 md:px-8 py-6 md:py-12 bg-light dark:bg-dark text-gray-900 dark:text-gray-100">
+      <h1 className="font-cinzel-decorative text-3xl md:text-4xl font-display font-bold mt-9 mb-8 text-center md:text-left lg:mt-12">
         News & Updates
       </h1>
 
@@ -42,10 +42,7 @@ export default function NewsPage() {
 
       {/* Conditionally render the modal here */}
       {selectedArticle && (
-        <NewsModal
-          article={selectedArticle}
-          onClose={handleModalClose}
-        />
+        <NewsModal article={selectedArticle} onClose={handleModalClose} />
       )}
     </main>
   );
