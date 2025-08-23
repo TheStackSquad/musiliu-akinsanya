@@ -1,6 +1,5 @@
 // src/app/page.js
 
-// src/app/page.js
 "use client";
 
 import { motion } from "framer-motion";
