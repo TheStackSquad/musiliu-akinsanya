@@ -75,8 +75,13 @@ export default function VideoPlayer() {
         playsInline
         poster="/img/mcOluomo.webp"
       >
-        <source src="/reel/poster.mp4" type="video/mp4" />
-        <source src="/reel/poster.webm" type="video/webm" />
+        <source src="/reel/poster.mp4" type='video/mp4; codecs="hvc1"' />
+        <source src="/reel/poster.mp4" type='video/mp4; codecs="avc1.42E01E"' />
+        <source
+          src="/reel/posterWebmFormat.webm"
+          type='video/webm; codecs="vp9"'
+        />
+        <source src="/reel/posterWebmFormat.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
